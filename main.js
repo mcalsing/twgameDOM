@@ -28,8 +28,6 @@ const adjacencyMap = {
   8: { norte: 5, oeste: 7 }
 };
 
-
-
 function createDiv(quant, name, where) {
   for (let i = 0; i < quant; i++) {
     let divGrid = document.createElement('div')
@@ -98,7 +96,6 @@ insertCardOnBoard.addEventListener('click', function(eventOrigin) {
   } else {
     alert('Esta posição já possui uma carta')
   }
-
 })
 
 function compareAdjacentCards(current, eventOrigin) {
@@ -119,11 +116,24 @@ function compareAdjacentCards(current, eventOrigin) {
         oeste: "leste"
       }[direction];
 
-      const currentCardValue = grid[current][direction]
-      
-      //console.log('Tem carta no lado:', oppositeDirection)
-      const adjacentCardValue = adjacentCard[oppositeDirection]
-      //console.log(`em um ${adjacentCardValue} no ${oppositeDirection}`)
+      const currentCardClass = grid[current]['character']
+      console.log(currentCardClass)
+      const adjacentCardClass = adjacentCard['character']
+      console.log(adjacentCardClass)
+
+      let currentCardValue = grid[current][direction]
+      let adjacentCardValue = adjacentCard[oppositeDirection]
+
+      if (currentCardClass == 'spearr' && adjacentCardClass == 'horsee') {
+        currentCardValue *= 2
+        console.log(currentCardValue)
+      } else if (currentCardClass == 'horse' && adjacentCardClass == 'archer') {
+        currentCardValue *= 2
+        console.log(currentCardValue)
+      } else if (currentCardClass == 'archer' && adjacentCardClass == 'spearr') {
+        currentCardValue *= 2
+        console.log(currentCardValue)
+      }
 
       const adjacentElement = document.querySelector(`.grid${adjacentPosition}`)
       if (currentCardValue > adjacentCardValue) {
