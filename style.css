@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#main-board {
+  max-width: 600px;
+  height: 600px;
+  background-color: rgb(185, 181, 181);
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+  gap: 2px;
+}
+
+#main-board > div {
+  background-color: rgb(77, 175, 175);
+/*   background-image: url("/images/zero.png");
+  background-size: cover; */
+  
+}
+
+#player-hand {
+  max-width: 600px;
+  height: 125px;
+  background-color: rgb(185, 181, 181);
+  margin: 100px auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+#player-hand > div {
+  background-color: rgb(77, 175, 175);
+  text-align: center;
+  background-size: cover;
+}
