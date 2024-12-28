@@ -36,7 +36,7 @@ function createDiv(quant, name, where) {
     divGrid.className = `${name}${i}`
     /* div.style.width = "100px";
     div.style.height = "100px";
-    div.style.background = "red";
+    divGrid.style.border = "thick solid #ffffff";
     div.style.color = "white"; */ 
     document.querySelector(`${where}`).appendChild(divGrid)
   }
@@ -86,7 +86,7 @@ insertCardOnBoard.addEventListener('click', function(eventOrigin) {
         console.log(grid[i])
       } */
   
-      compareAdjacentCards(currentPositionBoard)
+      compareAdjacentCards(currentPositionBoard, eventOrigin)
 
 
       selectedCard = null
@@ -101,7 +101,7 @@ insertCardOnBoard.addEventListener('click', function(eventOrigin) {
 
 })
 
-function compareAdjacentCards(current) {
+function compareAdjacentCards(current, eventOrigin) {
   const adjacents = adjacencyMap[current]
   //console.log(adjacents)
 
@@ -125,8 +125,10 @@ function compareAdjacentCards(current) {
       const adjacentCardValue = adjacentCard[oppositeDirection]
       //console.log(`em um ${adjacentCardValue} no ${oppositeDirection}`)
 
+      const adjacentElement = document.querySelector(`.grid${adjacentPosition}`)
       if (currentCardValue > adjacentCardValue) {
-        console.log('vc ganhou')
+        eventOrigin.target.style.border = "thick solid #0000FF"
+        adjacentElement.style.border = "thick solid #0000FF"
       }
     }
   }
