@@ -41,7 +41,8 @@ function createDiv(quant, name, where) {
 }
 
 createDiv(9, 'grid', '#main-board')
-createDiv(5, 'hand', '#player-hand')
+createDiv(5, 'playerH', '#player-hand')
+createDiv(5, 'pcH', '#pc-hand')
 
 let playerHand = document.querySelector('#player-hand')
 playerHand.addEventListener('click', cardFromHand) 
@@ -80,12 +81,8 @@ insertCardOnBoard.addEventListener('click', function(eventOrigin) {
       }
   
       grid[currentPositionBoard] = {character: character.nome, norte: character.norte, leste: character.leste, sul: character.sul, oeste: character.oeste}
-     /*  for (let i = 0; i < 9; i++) {
-        console.log(grid[i])
-      } */
-  
-      compareAdjacentCards(currentPositionBoard, eventOrigin)
 
+      compareAdjacentCards(currentPositionBoard, eventOrigin)
 
       selectedCard = null
     } else {
@@ -117,22 +114,21 @@ function compareAdjacentCards(current, eventOrigin) {
       }[direction];
 
       const currentCardClass = grid[current]['character']
-      console.log(currentCardClass)
+      //console.log(currentCardClass)
       const adjacentCardClass = adjacentCard['character']
-      console.log(adjacentCardClass)
+      //console.log(adjacentCardClass)
 
       let currentCardValue = grid[current][direction]
       let adjacentCardValue = adjacentCard[oppositeDirection]
 
       if (currentCardClass == 'spearr' && adjacentCardClass == 'horsee') {
         currentCardValue *= 2
-        console.log(currentCardValue)
+  
       } else if (currentCardClass == 'horse' && adjacentCardClass == 'archer') {
         currentCardValue *= 2
-        console.log(currentCardValue)
+        
       } else if (currentCardClass == 'archer' && adjacentCardClass == 'spearr') {
         currentCardValue *= 2
-        console.log(currentCardValue)
       }
 
       const adjacentElement = document.querySelector(`.grid${adjacentPosition}`)
@@ -152,12 +148,17 @@ function randomCard() {
 }
 
 function cardsOnPlayerHand() {
-  let hand0 = document.querySelector(".hand0").style.backgroundImage = `url('${spearr.imagem}')`
-  let hand1 = document.querySelector(".hand1").style.backgroundImage = `url('${horsee.imagem}')`
-  let hand2 = document.querySelector(".hand2").style.backgroundImage = `url('${archer.imagem}')`
-  let hand3 = document.querySelector(".hand3").style.backgroundImage = `url('${randomCard().imagem}')`
-  let hand4 = document.querySelector(".hand4").style.backgroundImage = `url('${randomCard().imagem}')`
+  document.querySelector(".playerH0").style.backgroundImage = `url('${spearr.imagem}')`
+  document.querySelector(".playerH1").style.backgroundImage = `url('${horsee.imagem}')`
+  document.querySelector(".playerH2").style.backgroundImage = `url('${archer.imagem}')`
+  document.querySelector(".playerH3").style.backgroundImage = `url('${randomCard().imagem}')`
+  document.querySelector(".playerH4").style.backgroundImage = `url('${randomCard().imagem}')`
 
+  document.querySelector(".pcH0").style.backgroundImage = `url('${spearr.imagem}')`
+  document.querySelector(".pcH1").style.backgroundImage = `url('${horsee.imagem}')`
+  document.querySelector(".pcH2").style.backgroundImage = `url('${archer.imagem}')`
+  document.querySelector(".pcH3").style.backgroundImage = `url('${randomCard().imagem}')`
+  document.querySelector(".pcH4").style.backgroundImage = `url('${randomCard().imagem}')`
 }
 
 cardsOnPlayerHand()

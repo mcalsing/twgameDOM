@@ -18,19 +18,18 @@
   background-color: rgb(77, 175, 175);
 /*   background-image: url("/images/zero.png");
   background-size: cover; */
-  
 }
 
-#player-hand {
+#player-hand, #pc-hand {
   max-width: 600px;
   height: 125px;
   background-color: rgb(185, 181, 181);
-  margin: 100px auto;
+  margin: 50px auto;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
 }
 
-#player-hand > div {
+#player-hand, #pc-hand > div {
   background-color: rgb(77, 175, 175);
   text-align: center;
   background-size: cover;
