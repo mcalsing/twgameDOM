@@ -3,34 +3,58 @@
   padding: 0;
 }
 
-#main-board {
-  max-width: 600px;
-  height: 600px;
-  background-color: rgb(185, 181, 181);
-  margin: 50px auto;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  text-align: center;
-  gap: 2px;
+body {
+  background-color: rgb(221, 217, 217);
 }
 
-#main-board > div {
-  background-color: rgb(77, 175, 175);
-/*   background-image: url("/images/zero.png");
-  background-size: cover; */
+#main-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 50px auto 50px;
+  grid-template-areas: "header header" "aside main" "footer footer";
+  background-color: blue;
+  width: 805px ;
+  margin: auto;
+}
+
+header {
+  background-color: aqua;
+  grid-area: header;
+}
+
+aside {
+  background-color: brown;
+  grid-area: aside;
+}
+
+main {
+  background-color: blueviolet;
+  grid-area: main;
+}
+
+footer {
+  background-color: cadetblue;
+  grid-area: footer;
+}
+
+#board {
+  background-color: rgb(185, 181, 181);
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 2px;
+
+}
+
+#board > div {
+  height: 200px;
 }
 
 #player-hand, #pc-hand {
-  max-width: 600px;
-  height: 125px;
-  background-color: rgb(185, 181, 181);
-  margin: 50px auto;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
+  height: 125px;
 }
 
-#player-hand, #pc-hand > div {
-  background-color: rgb(77, 175, 175);
-  text-align: center;
-  background-size: cover;
+#player-hand, #pc-hand {
+
 }

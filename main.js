@@ -40,7 +40,7 @@ function createDiv(quant, name, where) {
   }
 }
 
-createDiv(9, 'grid', '#main-board')
+createDiv(9, 'grid', '#board')
 createDiv(5, 'playerH', '#player-hand')
 createDiv(5, 'pcH', '#pc-hand')
 
@@ -62,7 +62,7 @@ function cardFromHand(eventOrigin) {
   }
 }
 
-const insertCardOnBoard = document.querySelector('#main-board')
+const insertCardOnBoard = document.querySelector('#board')
 insertCardOnBoard.addEventListener('click', function(eventOrigin) {
   let currentPositionBoard = eventOrigin.target.className.slice(-1)
 
