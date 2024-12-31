@@ -83,7 +83,7 @@ aside {
   background-size: cover;
 }
 
-#pc-hand {
+#computer-hand {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   height: 100px;
@@ -91,7 +91,7 @@ aside {
   gap: 2px;
 }
 
-#pc-hand > div {
+#computer-hand > div {
   border: 3px solid red;
   background-size: cover;
 }

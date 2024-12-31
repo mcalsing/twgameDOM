@@ -42,12 +42,46 @@ function createDiv(quant, name, where) {
 
 createDiv(9, 'grid', '#board')
 createDiv(5, 'playerH', '#player-hand')
-createDiv(5, 'pcH', '#pc-hand')
+createDiv(5, 'pcH', '#computer-hand')
 
+let computerPoint = 0
+let playerPoint = 0
+ 
+let computerHand = document.querySelector('#computer-hand')
 let playerHand = document.querySelector('#player-hand')
-playerHand.addEventListener('click', cardFromHand) 
-let selectedCard = null
 
+let selectedCard = null
+let currentHand = null
+computerHand.addEventListener('click', function(eventOrigin) {
+  currentHand = 'computer'
+  let divTarget = eventOrigin.target
+
+  if (divTarget.style.backgroundImage) {
+    const backgroundImage = window.getComputedStyle(divTarget).backgroundImage
+    let url = backgroundImage.slice(34,44)
+    selectedCard = `url('./images/${url}')`
+    divTarget.removeAttribute('style')
+
+  } else {
+    alert("Este espaço da sua mão está vazio")
+  }
+})
+
+playerHand.addEventListener('click', function(eventOrigin) {
+  currentHand = 'player'
+  let divTarget = eventOrigin.target
+
+  if (divTarget.style.backgroundImage) {
+    const backgroundImage = window.getComputedStyle(divTarget).backgroundImage
+    let url = backgroundImage.slice(34,44)
+    selectedCard = `url('./images/${url}')`
+    divTarget.removeAttribute('style')
+
+  } else {
+    alert("Este espaço da sua mão está vazio")
+  }
+})
+/* 
 function cardFromHand(eventOrigin) {
   let divTarget = eventOrigin.target
 
@@ -61,9 +95,10 @@ function cardFromHand(eventOrigin) {
     alert("Este espaço da sua mão está vazio")
   }
 }
-
+ */
 const insertCardOnBoard = document.querySelector('#board')
 insertCardOnBoard.addEventListener('click', function(eventOrigin) {
+  console.log(currentHand)
   let currentPositionBoard = eventOrigin.target.className.slice(-1)
 
   if (Object.keys(grid[currentPositionBoard])[0] == 'position') {
@@ -133,8 +168,13 @@ function compareAdjacentCards(current, eventOrigin) {
 
       const adjacentElement = document.querySelector(`.grid${adjacentPosition}`)
       if (currentCardValue > adjacentCardValue) {
-        eventOrigin.target.style.border = "thick solid blue"
-        adjacentElement.style.border = "thick solid blue"
+        if (currentHand === 'player') {
+          eventOrigin.target.style.border = "thick solid blue"
+          adjacentElement.style.border = "thick solid blue"
+        } else {
+          eventOrigin.target.style.border = "thick solid red"
+          adjacentElement.style.border = "thick solid red"
+        }
       }
     }
   }
