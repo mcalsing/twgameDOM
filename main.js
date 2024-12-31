@@ -133,8 +133,8 @@ function compareAdjacentCards(current, eventOrigin) {
 
       const adjacentElement = document.querySelector(`.grid${adjacentPosition}`)
       if (currentCardValue > adjacentCardValue) {
-        eventOrigin.target.style.border = "thick solid #0000FF"
-        adjacentElement.style.border = "thick solid #0000FF"
+        eventOrigin.target.style.border = "thick solid blue"
+        adjacentElement.style.border = "thick solid blue"
       }
     }
   }

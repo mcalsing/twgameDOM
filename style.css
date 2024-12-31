@@ -31,9 +31,9 @@ header {
   grid-template-areas: "aside board";
   width: 705px;
   margin: auto;
-  border: 2px solid whitesmoke;
   border-radius: 10px;
   padding: 15px;
+  background-color: rgb(117, 109, 97);
 }
 
 footer {
@@ -42,8 +42,14 @@ footer {
 }
 
 aside {
-  border: 2px solid whitesmoke;
+  border: 1px solid whitesmoke;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
 }
 
 #board {
@@ -59,6 +65,7 @@ aside {
 }
 
 #board > div {
+  width: 160px;
   height: 160px;
   border: thick solid grey;
 }
@@ -89,12 +96,47 @@ aside {
   background-size: cover;
 }
 
+
+#middle-line {
+  border-bottom: 1px solid whitesmoke;
+  width: 80%;
+}
+
+#computer-points {
+  color: red;
+  font-size: 3rem;
+}
+
+#player-points {
+  color: blue;
+  font-size: 3rem;
+}
+
 footer {
   text-align: center;
   align-self: center;
   padding: 15px
 }
 
-#middle-line {
-  
+aside > span {
+  overflow: hidden;
+}
+
+aside > p {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .middle-container {
+    grid-template-columns: 1fr 6fr;
+    width: 600px;
+  }
+    
+  aside > span {
+    display: none;
+  }
+
+  aside > p {
+    display: inline;
+  }
 }
