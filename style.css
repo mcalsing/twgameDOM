@@ -102,12 +102,12 @@ aside {
   width: 80%;
 }
 
-#computer-points {
+#computer-score {
   color: red;
   font-size: 3rem;
 }
 
-#player-points {
+#player-score {
   color: blue;
   font-size: 3rem;
 }

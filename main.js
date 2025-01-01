@@ -44,8 +44,8 @@ createDiv(9, 'grid', '#board')
 createDiv(5, 'playerH', '#player-hand')
 createDiv(5, 'pcH', '#computer-hand')
 
-let computerPoint = 0
-let playerPoint = 0
+let computerScore = 0
+let playerScore = 0
  
 let computerHand = document.querySelector('#computer-hand')
 let playerHand = document.querySelector('#player-hand')
@@ -81,21 +81,7 @@ playerHand.addEventListener('click', function(eventOrigin) {
     alert("Este espaço da sua mão está vazio")
   }
 })
-/* 
-function cardFromHand(eventOrigin) {
-  let divTarget = eventOrigin.target
 
-  if (divTarget.style.backgroundImage) {
-    const backgroundImage = window.getComputedStyle(divTarget).backgroundImage
-    let url = backgroundImage.slice(34,44)
-    selectedCard = `url('./images/${url}')`
-    divTarget.removeAttribute('style')
-
-  } else {
-    alert("Este espaço da sua mão está vazio")
-  }
-}
- */
 const insertCardOnBoard = document.querySelector('#board')
 insertCardOnBoard.addEventListener('click', function(eventOrigin) {
   console.log(currentHand)
@@ -116,19 +102,40 @@ insertCardOnBoard.addEventListener('click', function(eventOrigin) {
       }
   
       grid[currentPositionBoard] = {character: character.nome, norte: character.norte, leste: character.leste, sul: character.sul, oeste: character.oeste}
-
+    
       compareAdjacentCards(currentPositionBoard, eventOrigin)
 
       selectedCard = null
     } else {
-      /* alert("Nenhuma carta selecionada") */
       alert("Selecione uma carta da mão antes de coloca-lá no Board")
     }
 
   } else {
     alert('Esta posição já possui uma carta')
   }
+
+  parent = document.querySelectorAll('#board')
+  playerScore = 0
+  document.querySelector('#player-score').innerHTML = playerScore
+  computerScore = 0
+  document.querySelector('#computer-score').innerHTML = computerScore
+  for (let i = 0; i < 9; i++) {
+    let colorsForScore = parent[0].children[i].style.border.slice(-4)
+    //console.log('true', colorsForScore)
+    if (colorsForScore.includes('blue')) {
+      playerScore += 1
+      console.log('blue', playerScore)
+      document.querySelector('#player-score').innerHTML = playerScore
+
+    } else if (colorsForScore.includes('red')) {
+      computerScore += 1
+      console.log('red', computerScore)
+      document.querySelector('#computer-score').innerHTML = computerScore
+    }
+  }
 })
+
+let parent = null
 
 function compareAdjacentCards(current, eventOrigin) {
   const adjacents = adjacencyMap[current]
@@ -137,9 +144,20 @@ function compareAdjacentCards(current, eventOrigin) {
   for (const direction in adjacents) {
     const adjacentPosition = adjacents[direction]
     const adjacentCard = grid[adjacentPosition] // Obtem as cartas adjacentes
+    //console.log(Object.keys(adjacentCard) == 'position')
     //console.log('Onde a carta colocada tem adjacente:', direction)
 
     //console.log(Object.keys(grid[adjacentPosition])[0])
+
+    // define a cor da borda quando o jogador colocar a carta no tabuleiro
+    if (Object.keys(adjacentCard) == 'position') {
+      if (currentHand === 'player') {
+        eventOrigin.target.style.border = "thick solid blue"
+      } else {
+        eventOrigin.target.style.border = "thick solid red"
+      }
+    }
+
     if (Object.keys(grid[adjacentPosition])[0] !== 'position') {
       const oppositeDirection = {
         norte: "sul",
@@ -171,6 +189,7 @@ function compareAdjacentCards(current, eventOrigin) {
         if (currentHand === 'player') {
           eventOrigin.target.style.border = "thick solid blue"
           adjacentElement.style.border = "thick solid blue"
+          
         } else {
           eventOrigin.target.style.border = "thick solid red"
           adjacentElement.style.border = "thick solid red"
