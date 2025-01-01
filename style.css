@@ -15,7 +15,6 @@ span {
   display: grid;
   grid-template-rows: 50px auto auto;
   grid-template-areas: "header" "middle" "footer";
-  background-color: rgb(31, 31, 41);
   margin: auto;
 }
 
@@ -33,12 +32,15 @@ header {
   margin: auto;
   border-radius: 10px;
   padding: 15px;
-  background-color: rgb(117, 109, 97);
+  background-color: rgb(153, 140, 121, 0.7);
+  /*  background-color: rgb(255, 255, 255, 0.05)*/
+  backdrop-filter: blur(5px);
 }
 
 footer {
-  background-color: cadetblue;
+  background-color: rgb(153, 140, 121, 0.7);
   grid-area: footer;
+  backdrop-filter: blur(5px);
 }
 
 aside {
@@ -53,11 +55,11 @@ aside {
 }
 
 #board {
-  background-color: rgb(185, 181, 181);
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 2px;
-  margin: 30px 0
+  margin: 30px 0;
+  border-radius: 10px;
 }
 
 #board-container {
@@ -68,6 +70,8 @@ aside {
   width: 160px;
   height: 160px;
   border: thick solid grey;
+  border-radius: 10px;
+  background-color: rgb(185, 181, 181, 0.4);
 }
 
 #player-hand{
@@ -76,11 +80,13 @@ aside {
   height: 100px;
   background-color: #0059ff;
   gap: 2px;
+  border-radius: 10px;
 }
 
 #player-hand > div {
   border: 3px solid #0000FF;
   background-size: cover;
+  border-radius: 5px;
 }
 
 #computer-hand {
@@ -89,11 +95,13 @@ aside {
   height: 100px;
   background-color: rgb(255, 128, 128);
   gap: 2px;
+  border-radius: 10px;
 }
 
 #computer-hand > div {
   border: 3px solid red;
   background-size: cover;
+  border-radius: 5px;
 }
 
 
@@ -104,26 +112,39 @@ aside {
 
 #computer-score {
   color: red;
-  font-size: 3rem;
+  font-size: 4rem;
+  font-weight: bold
 }
 
 #player-score {
   color: blue;
-  font-size: 3rem;
+  font-size: 4rem;
+  font-weight: bold
 }
 
 footer {
   text-align: center;
-  align-self: center;
-  padding: 15px
+  padding: 15px;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 }
 
 aside > span {
   overflow: hidden;
+  font-weight: bold
 }
 
 aside > p {
   display: none;
+}
+
+#main-container > img {
+  z-index: -100;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 768px) {

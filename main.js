@@ -84,7 +84,6 @@ playerHand.addEventListener('click', function(eventOrigin) {
 
 const insertCardOnBoard = document.querySelector('#board')
 insertCardOnBoard.addEventListener('click', function(eventOrigin) {
-  console.log(currentHand)
   let currentPositionBoard = eventOrigin.target.className.slice(-1)
 
   if (Object.keys(grid[currentPositionBoard])[0] == 'position') {
@@ -124,12 +123,10 @@ insertCardOnBoard.addEventListener('click', function(eventOrigin) {
     //console.log('true', colorsForScore)
     if (colorsForScore.includes('blue')) {
       playerScore += 1
-      console.log('blue', playerScore)
       document.querySelector('#player-score').innerHTML = playerScore
 
     } else if (colorsForScore.includes('red')) {
       computerScore += 1
-      console.log('red', computerScore)
       document.querySelector('#computer-score').innerHTML = computerScore
     }
   }
@@ -144,10 +141,6 @@ function compareAdjacentCards(current, eventOrigin) {
   for (const direction in adjacents) {
     const adjacentPosition = adjacents[direction]
     const adjacentCard = grid[adjacentPosition] // Obtem as cartas adjacentes
-    //console.log(Object.keys(adjacentCard) == 'position')
-    //console.log('Onde a carta colocada tem adjacente:', direction)
-
-    //console.log(Object.keys(grid[adjacentPosition])[0])
 
     // define a cor da borda quando o jogador colocar a carta no tabuleiro
     if (Object.keys(adjacentCard) == 'position') {
@@ -177,7 +170,7 @@ function compareAdjacentCards(current, eventOrigin) {
       if (currentCardClass == 'spearr' && adjacentCardClass == 'horsee') {
         currentCardValue *= 2
   
-      } else if (currentCardClass == 'horse' && adjacentCardClass == 'archer') {
+      } else if (currentCardClass == 'horsee' && adjacentCardClass == 'archer') {
         currentCardValue *= 2
         
       } else if (currentCardClass == 'archer' && adjacentCardClass == 'spearr') {
