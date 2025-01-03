@@ -1,4 +1,5 @@
 import Cartas from './dataCards.js';
+'use stric'
 
 const spearr = Cartas.spearr
 const horsee = Cartas.horsee

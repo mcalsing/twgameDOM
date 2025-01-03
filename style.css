@@ -3,17 +3,13 @@
   padding: 0;
 }
 
-body {
-  background-color: rgb(221, 217, 217);
-}
-
-span {
-  text-align: center;
+a {
+  text-decoration: none;
 }
 
 #main-container {
   display: grid;
-  grid-template-rows: 50px auto auto;
+  grid-template-rows: 35px auto auto;
   grid-template-areas: "header" "middle" "footer";
   margin: auto;
 }
@@ -21,6 +17,10 @@ span {
 header {
   background-color: aqua;
   grid-area: header;
+}
+
+header > img {
+
 }
 
 .middle-container {
@@ -34,12 +34,6 @@ header {
   padding: 15px;
   background-color: rgb(153, 140, 121, 0.7);
   /*  background-color: rgb(255, 255, 255, 0.05)*/
-  backdrop-filter: blur(5px);
-}
-
-footer {
-  background-color: rgb(153, 140, 121, 0.7);
-  grid-area: footer;
   backdrop-filter: blur(5px);
 }
 
@@ -58,7 +52,7 @@ aside {
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 2px;
-  margin: 30px 0;
+  margin: 15px 0;
   border-radius: 10px;
 }
 
@@ -78,7 +72,6 @@ aside {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   height: 100px;
-  background-color: #0059ff;
   gap: 2px;
   border-radius: 10px;
 }
@@ -87,21 +80,22 @@ aside {
   border: 3px solid #0000FF;
   background-size: cover;
   border-radius: 5px;
+  background-color: #0059ff;
 }
 
 #computer-hand {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   height: 100px;
-  background-color: rgb(255, 128, 128);
   gap: 2px;
   border-radius: 10px;
 }
 
 #computer-hand > div {
-  border: 3px solid red;
+  border: 3px solid rgb(247, 10, 10);
   background-size: cover;
   border-radius: 5px;
+  background-color: rgb(255, 128, 128);
 }
 
 
@@ -123,11 +117,14 @@ aside {
 }
 
 footer {
+  background-color: rgb(153, 140, 121, 0.7);
+  grid-area: footer;
+  backdrop-filter: blur(5px);
   text-align: center;
-  padding: 15px;
+  padding: 10px 0;
   bottom: 0;
-  position: fixed;
   width: 100%;
+  position: absolute;
 }
 
 aside > span {
